@@ -1,42 +1,61 @@
 import { Canvas } from '@react-three/fiber'
-import { Environment, OrbitControls, Sky, Stage } from '@react-three/drei'
+import { OrbitControls, Environment } from '@react-three/drei' 
 import { Suspense } from 'react';
 import { Isla } from './pages/Isla';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import HeroText from './components/HeroText';
 
 function App() {
   return (
-
-    <div className='h-dvh'>
-    <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-      <Suspense fallback={null}> {/* Para manejar la carga del archivo */}
-
-        {/* <Environment 
-         files="/grasslands_sunset_1k.exr" 
-         background // Esto hace que se vea de fondo, no solo que ilumine
-         /> */}
-
-           <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} />
-
-          <OrbitControls
-           enableZoom={false} // Evita zoom infinito al hacer scroll
-           makeDefault
-            autoRotate
-            autoRotateSpeed={5}
-         />
-
-         <Sky
-        distance={450000} // Distancia de la esfera del cielo
-        sunPosition={[0, 1, 0]} // Posición del sol (puedes animarlo para atardeceres)
-        inclination={0}
-        azimuth={0.25}
-/>
-
-           <Isla/>
+    <div className="flex flex-col min-h-screen bg-slate-50 w-full font-sans">
+      
+      {}
+      <Header />
+      
+      {}
+      <main className="flex-grow w-full flex flex-col md:flex-row items-center justify-between gap-8 p-6 md:p-12">
         
-      </Suspense>
-      <OrbitControls makeDefault />
-    </Canvas>
+        {}
+        <div className="flex-1 w-full max-w-2xl">
+          <HeroText />
+        </div>
+
+        {}
+        <div className="flex-1 w-full h-[600px] border-2 border-slate-200 rounded-3xl bg-white shadow-2xl overflow-hidden">
+          
+          <Canvas camera={{ position: [0, 5, 30], fov: 45 }}>
+            <Suspense fallback={null}>
+              
+              {}
+              {}
+
+              <Environment 
+                files="/grasslands_sunset_1k.exr" 
+                background 
+              />
+
+              {}
+              <ambientLight intensity={0.5} />
+              <pointLight position={[10, 15, 10]} intensity={1} />
+
+              {}
+              <OrbitControls
+                enableZoom={true} 
+                makeDefault
+                autoRotate
+                autoRotateSpeed={0.5}
+              />
+
+              <Isla />
+              
+            </Suspense>
+          </Canvas>
+        </div>
+      </main>
+
+      {}
+      <Footer />
     </div>
   )
 }
