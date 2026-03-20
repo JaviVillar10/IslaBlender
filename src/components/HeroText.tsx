@@ -5,7 +5,7 @@ export default function HeroText() {
         Mérida
       </span>
       <h2 className="text-6xl font-extrabold text-slate-950 mb-8 leading-tight tracking-tighter">
-            La mejor opcion para aprender <span className="text-blue-800">IES Albarregas</span>
+            <p>La mejor opcion para aprender</p> <span className="text-blue-800">IES Albarregas</span>
       </h2>
       <p className="text-xl text-slate-700 mb-12 leading-relaxed max-w-lg">
         Podrás aprender a realizar modelos en 3D como este Acueducto de los milagros
